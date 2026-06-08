@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shats's Ontario Odyssey · A Birthday Expedition</title>
+<meta name="description" content="Three days, five friends, one birthday. Shats's Ontario road-trip expedition, July 24 to 26." />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Hanken+Grotesk:wght@300..800&family=Space+Mono:wght@400;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   SHATS ONTARIO ODYSSEY · golden-hour travel-journal birthday
+   ============================================================ */
+
+:root{
+  --cream:#fbf3e6;
+  --cream-2:#f5e7d0;
+  --ink:#231509;
+  --ink-soft:#4a3320;
+  --paper-line:#e3cfa8;
+
+  --pink:#ff5d8f;
+  --coral:#ff7a45;
+  --gold:#ffb02e;
+  --rust:#b8431f;
+  --plum:#3a234f;
+  --plum-deep:#1c0f2c;
+  --night:#0f0a1f;
+  --teal:#1f8f86;
+  --island:#1d6fa8;
+  --lake:#5a7d99;
+
+  --shadow-warm:24px 30px 60px -28px rgba(120,40,12,.55);
+  --maxw:1280px;
+
+  --ff-display:"Fraunces", Georgia, serif;
+  --ff-body:"Hanken Grotesk", system-ui, sans-serif;
+  --ff-mono:"Space Mono", ui-monospace, monospace;
+  --ff-hand:"Caveat", cursive;
+}
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+html{ -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+html.lenis,html.lenis body{ height:auto; }
+.lenis.lenis-smooth{ scroll-behavior:auto !important; }
+.lenis.lenis-stopped{ overflow:hidden; }
+
+body{
+  font-family:var(--ff-body);
+  background:var(--cream);
+  color:var(--ink);
+  overflow-x:hidden;
+  line-height:1.55;
+}
+
+::selection{ background:var(--pink); color:#fff; }
+
+img{ display:block; max-width:100%; }
+
+/* ---------- grain overlay ---------- */
+.grain{
+  position:fixed; inset:-50%; z-index:9000; pointer-events:none;
+  opacity:.05; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grainShift 7s steps(6) infinite;
+}
+@keyframes grainShift{
+  0%{transform:translate(0,0)}10%{transform:translate(-4%,-3%)}30%{transform:translate(3%,-6%)}
+  50%{transform:translate(-3%,5%)}70%{transform:translate(6%,2%)}90%{transform:translate(-2%,4%)}100%{transform:translate(0,0)}
+}
+
+/* ---------- progress comet ---------- */
+.progress{ position:fixed; top:0; left:0; height:4px; width:100%; z-index:9500; transform:scaleX(0); transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--pink),var(--coral),var(--gold)); box-shadow:0 0 18px rgba(255,120,69,.7); }
+
+/* ---------- shared layout ---------- */
+section{ position:relative; }
+.wrap{ width:min(92vw,var(--maxw)); margin-inline:auto; }
+.kicker{ font-family:var(--ff-mono); font-size:clamp(.62rem,1.1vw,.78rem); letter-spacing:.34em; text-transform:uppercase; }
+.hand{ font-family:var(--ff-hand); line-height:1; }
+
+/* reveal helpers */
+.r-up{ opacity:0; transform:translateY(40px); }
+.line-mask{ overflow:hidden; display:block; }
+.line-mask > span{ display:block; transform:translateY(110%); }
+
+/* =================================================================
+   HERO
+   ================================================================= */
+.hero{
+  min-height:100svh; display:flex; flex-direction:column; justify-content:space-between;
+  padding:clamp(1.2rem,3vw,2.4rem) 0 clamp(1.6rem,4vw,3rem);
+  color:var(--cream);
+  background:
+    radial-gradient(120% 90% at 80% -10%, rgba(255,176,46,.65), transparent 55%),
+    radial-gradient(120% 100% at 8% 8%, rgba(255,93,143,.6), transparent 52%),
+    linear-gradient(160deg,#2a163d 0%, #5a2150 38%, #b8431f 74%, #ff7a45 100%);
+  overflow:hidden;
+}
+.hero::after{ /* sun glow */
+  content:""; position:absolute; width:60vmax; height:60vmax; right:-12vmax; top:-22vmax; border-radius:50%;
+  background:radial-gradient(circle,#ffd98a 0%, rgba(255,176,46,.45) 35%, transparent 68%);
+  filter:blur(8px); pointer-events:none;
+}
+.hero__top{ position:relative; z-index:3; display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; }
+.hero__top .kicker{ color:rgba(255,243,230,.85); }
+.boarding{
+  font-family:var(--ff-mono); font-size:.7rem; letter-spacing:.12em; text-align:right;
+  border:1px dashed rgba(255,243,230,.5); border-radius:12px; padding:.55rem .8rem; backdrop-filter:blur(3px);
+}
+.boarding b{ display:block; font-size:.95rem; letter-spacing:.05em; }
+
+.hero__center{ position:relative; z-index:3; text-align:center; flex:1; display:flex; flex-direction:column; justify-content:center; }
+.hero__pre{ font-family:var(--ff-hand); font-size:clamp(1.6rem,4.5vw,3rem); color:var(--gold); transform:rotate(-3deg); margin-bottom:-.4em; }
+.hero__name{
+  font-family:var(--ff-display); font-weight:600; font-style:italic;
+  font-size:clamp(4.2rem,21vw,18rem); line-height:.82; letter-spacing:-.02em;
+  background:linear-gradient(180deg,#fff 0%, #ffe9c7 55%, #ffb02e 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  filter:drop-shadow(0 14px 40px rgba(40,8,30,.45));
+}
+.hero__sub{
+  font-family:var(--ff-display); font-weight:300; font-size:clamp(1.1rem,3.4vw,2.4rem);
+  letter-spacing:.02em; margin-top:.2em;
+}
+.hero__sub em{ font-style:italic; color:var(--gold); }
+.hero__bottom{ position:relative; z-index:3; display:flex; justify-content:space-between; align-items:flex-end; gap:1.4rem; flex-wrap:wrap; }
+.hero__stats{ display:flex; gap:clamp(1.2rem,4vw,3rem); }
+.stat .n{ font-family:var(--ff-display); font-weight:600; font-size:clamp(1.8rem,5vw,3.2rem); line-height:1; }
+.stat .l{ font-family:var(--ff-mono); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; opacity:.8; }
+.scrollcue{ font-family:var(--ff-mono); font-size:.66rem; letter-spacing:.25em; text-transform:uppercase; display:flex; align-items:center; gap:.6rem; opacity:.85; }
+.scrollcue .bar{ width:1px; height:42px; background:linear-gradient(var(--gold),transparent); position:relative; overflow:hidden; }
+.scrollcue .bar::after{ content:""; position:absolute; inset:0; background:var(--cream); animation:cue 1.8s ease-in-out infinite; }
+@keyframes cue{ 0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)} }
+
+/* floating confetti specks in hero */
+.speck{ position:absolute; z-index:2; border-radius:2px; opacity:.85; }
+
+/* =================================================================
+   INTRO / FIELD NOTES
+   ================================================================= */
+.intro{ background:var(--cream); padding:clamp(5rem,12vw,9rem) 0; position:relative; }
+.intro::before{ /* topo paper lines */
+  content:""; position:absolute; inset:0; pointer-events:none; opacity:.5;
+  background-image:radial-gradient(var(--paper-line) 1px, transparent 1px); background-size:26px 26px;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 18%,#000 82%,transparent);
+          mask-image:linear-gradient(180deg,transparent,#000 18%,#000 82%,transparent);
+}
+.intro__grid{ display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(2rem,6vw,5rem); align-items:center; position:relative; z-index:2; }
+.intro__lead{ font-family:var(--ff-display); font-weight:340; font-size:clamp(1.7rem,3.7vw,3.1rem); line-height:1.18; letter-spacing:-.01em; }
+.intro__lead b{ font-weight:600; font-style:italic; color:var(--rust); }
+.intro__lead .mark{ background:linear-gradient(transparent 62%, var(--gold) 62%); padding:0 .08em; }
+.intro__note{ margin-top:1.6rem; max-width:46ch; color:var(--ink-soft); font-size:1.05rem; }
+.intro .kicker{ color:var(--rust); margin-bottom:1.4rem; }
+
+/* polaroid map */
+.polaroid{ background:#fff; padding:14px 14px 58px; border-radius:6px; box-shadow:var(--shadow-warm); transform:rotate(3deg); position:relative; }
+.polaroid img{ border-radius:3px; width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center; }
+.polaroid .cap{ position:absolute; bottom:14px; left:0; right:0; text-align:center; font-family:var(--ff-hand); font-size:1.6rem; color:var(--ink); }
+.polaroid .tape{ position:absolute; top:-16px; left:50%; transform:translateX(-50%) rotate(-4deg); width:120px; height:34px; background:rgba(255,176,46,.55); border:1px dashed rgba(184,67,31,.4); }
+
+/* marquee of place names */
+.marquee{ overflow:hidden; padding:clamp(2.5rem,6vw,4.5rem) 0; background:var(--ink); color:var(--cream); }
+.marquee__track{ display:flex; gap:2.2rem; width:max-content; will-change:transform; }
+.marquee__track span{ font-family:var(--ff-display); font-style:italic; font-weight:500; font-size:clamp(2.2rem,7vw,5.5rem); white-space:nowrap; opacity:.92; }
+.marquee__track .dot{ color:var(--gold); font-style:normal; }
+
+/* =================================================================
+   ROUTE MAP
+   ================================================================= */
+.route{ background:linear-gradient(180deg,#fbe8d6 0%, var(--cream) 100%); padding:clamp(5rem,11vw,8.5rem) 0; position:relative; --dotw:clamp(46px,6vw,66px); }
+.route__head{ text-align:center; margin-bottom:clamp(2.6rem,6vw,4.5rem); }
+.route__head .kicker{ color:var(--rust); }
+.route__title{ font-family:var(--ff-display); font-style:italic; font-weight:600; font-size:clamp(2.6rem,9vw,6rem); line-height:.95; margin:.3em 0 .15em; }
+.route__title em{ color:var(--rust); }
+.route__sub{ color:var(--ink-soft); max-width:42ch; margin:0 auto; font-size:1.05rem; }
+
+.rdot{ width:var(--dotw); height:var(--dotw); border-radius:50%; display:grid; place-items:center;
+  font-size:calc(var(--dotw)*.42); background:#fff; border:2px solid var(--gold);
+  box-shadow:0 12px 26px -12px rgba(120,40,12,.55); }
+
+/* --- horizontal (desktop) --- */
+.route__h{ position:relative; }
+.rrow{ display:flex; }
+.rrow>*{ flex:1 1 0; text-align:center; min-width:0; }
+.rrow--badge>span{ font-family:var(--ff-mono); font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; color:var(--rust); }
+.rrow--dots{ position:relative; align-items:center; padding:.7rem 0; margin:.5rem 0; }
+.rcell{ display:flex; justify-content:center; position:relative; z-index:2; }
+.rline{ position:absolute; left:calc(100%/14); right:calc(100%/14); top:50%; transform:translateY(-50%); height:3px; z-index:0;
+  background:repeating-linear-gradient(90deg,var(--paper-line) 0 9px, transparent 9px 18px); }
+.rfill{ position:absolute; left:0; top:0; height:100%; width:0%; border-radius:3px;
+  background:linear-gradient(90deg,var(--pink),var(--coral),var(--gold)); box-shadow:0 0 14px rgba(255,120,69,.6); }
+.rcar{ position:absolute; top:50%; left:0%; transform:translate(-50%,-55%); font-size:clamp(1.5rem,3vw,2.1rem); z-index:5; filter:drop-shadow(0 6px 8px rgba(0,0,0,.25)); }
+.rrow--name b{ font-family:var(--ff-display); font-weight:600; font-size:clamp(.82rem,1.5vw,1.06rem); display:block; line-height:1.1; }
+.rrow--name i{ font-family:var(--ff-mono); font-style:normal; font-size:.58rem; letter-spacing:.06em; text-transform:uppercase; opacity:.6; }
+
+/* --- vertical (mobile) --- */
+.route__v{ display:none; position:relative; list-style:none; }
+.rline-v{ position:absolute; left:calc(var(--dotw)/2); top:1.6rem; bottom:1.6rem; width:3px; transform:translateX(-50%); z-index:0;
+  background:repeating-linear-gradient(180deg,var(--paper-line) 0 9px, transparent 9px 18px); }
+.rfill-v{ position:absolute; left:0; top:0; width:100%; height:0%;
+  background:linear-gradient(180deg,var(--pink),var(--coral),var(--gold)); box-shadow:0 0 14px rgba(255,120,69,.6); }
+.rcar-v{ position:absolute; left:calc(var(--dotw)/2); top:0; transform:translate(-50%,-50%); font-size:1.8rem; z-index:5; }
+.vnode{ display:flex; align-items:center; gap:1.1rem; padding:.85rem 0; position:relative; z-index:2; }
+.vnode .vtext em{ font-family:var(--ff-mono); font-style:normal; font-size:.56rem; letter-spacing:.18em; text-transform:uppercase; color:var(--rust); display:block; }
+.vnode .vtext b{ font-family:var(--ff-display); font-weight:600; font-size:1.25rem; display:block; line-height:1; }
+.vnode .vtext i{ font-family:var(--ff-mono); font-style:normal; font-size:.62rem; letter-spacing:.06em; text-transform:uppercase; opacity:.6; }
+
+/* real map polaroid */
+.route__real{ display:flex; align-items:center; gap:clamp(1.5rem,5vw,3.5rem); margin-top:clamp(3rem,7vw,5rem); justify-content:center; flex-wrap:wrap; }
+.polaroid--map{ transform:rotate(-3deg); width:min(300px,80vw); }
+.polaroid--map img{ aspect-ratio:3/4; }
+.route__realnote{ font-family:var(--ff-hand); font-size:clamp(1.5rem,3vw,2.1rem); color:var(--rust); max-width:16ch; line-height:1.2; }
+
+/* =================================================================
+   DAY SECTIONS
+   ================================================================= */
+.day{ padding:clamp(5rem,11vw,9rem) 0; position:relative; overflow:hidden; }
+.day--1{ background:linear-gradient(180deg,var(--cream) 0%, #fbe8d6 100%); color:var(--ink); }
+.day--2{ background:linear-gradient(180deg,#160d22 0%, #2a1208 60%, #3d1c08 100%); color:var(--cream); }
+.day--3{ background:linear-gradient(180deg,#0a3a5c 0%, #1d6fa8 45%, #2aa6b8 100%); color:#f3fbff; }
+
+.day__head{ position:relative; z-index:3; display:flex; align-items:flex-end; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:clamp(2.5rem,6vw,5rem); }
+.day__ghost{ position:absolute; z-index:0; top:-4vw; left:-1vw; font-family:var(--ff-display); font-weight:700; font-size:clamp(14rem,40vw,40rem); line-height:.7; opacity:.06; pointer-events:none; user-select:none; }
+.day--2 .day__ghost,.day--3 .day__ghost{ opacity:.09; }
+.day__label{ position:relative; z-index:3; }
+.day__label .kicker{ display:block; margin-bottom:.7rem; }
+.day--1 .day__label .kicker{ color:var(--rust); }
+.day--2 .day__label .kicker{ color:var(--gold); }
+.day--3 .day__label .kicker{ color:#bdeaff; }
+.day__title{ font-family:var(--ff-display); font-weight:600; font-style:italic; font-size:clamp(2.6rem,7vw,5.8rem); line-height:.95; letter-spacing:-.02em; }
+.day__date{ font-family:var(--ff-mono); text-align:right; font-size:.8rem; letter-spacing:.12em; opacity:.85; }
+.day__date b{ display:block; font-size:1.15rem; }
+
+/* stops: alternating editorial rows */
+.stop{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.6rem,5vw,4.5rem); align-items:center; position:relative; z-index:3; margin-bottom:clamp(4rem,9vw,7rem); }
+.stop:last-child{ margin-bottom:0; }
+.stop--flip .stop__media{ order:2; }
+.stop__media{ position:relative; }
+.frame{ position:relative; border-radius:14px; overflow:hidden; box-shadow:var(--shadow-warm); }
+.frame img{ width:100%; height:100%; object-fit:cover; display:block; will-change:transform; transform:scale(1.18); }
+.frame--tall{ aspect-ratio:4/5; }
+.frame--wide{ aspect-ratio:4/3; }
+.frame--port{ aspect-ratio:3/4; }
+.frame__tag{ position:absolute; left:14px; bottom:14px; z-index:2; font-family:var(--ff-mono); font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:#fff; background:rgba(20,10,4,.5); backdrop-filter:blur(4px); padding:.4rem .7rem; border-radius:30px; }
+.stop__num{ font-family:var(--ff-mono); font-size:.72rem; letter-spacing:.25em; opacity:.6; margin-bottom:1rem; }
+.stop__name{ font-family:var(--ff-display); font-weight:600; font-size:clamp(2rem,4.6vw,3.6rem); line-height:1; letter-spacing:-.01em; margin-bottom:.2em; }
+.stop__name em{ font-style:italic; }
+.day--1 .stop__name em{ color:var(--rust); }
+.day--2 .stop__name em{ color:var(--gold); }
+.day--3 .stop__name em{ color:#7fe3ff; }
+.stop__body{ font-size:1.06rem; max-width:44ch; opacity:.92; margin-top:.9rem; }
+.stop__hand{ font-family:var(--ff-hand); font-size:1.7rem; margin-top:1rem; display:inline-block; transform:rotate(-2deg); }
+.day--1 .stop__hand{ color:var(--rust); }
+.day--2 .stop__hand{ color:var(--gold); }
+.day--3 .stop__hand{ color:#aef0ff; }
+.tags{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.3rem; }
+.tags span{ font-family:var(--ff-mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; border:1px solid currentColor; opacity:.7; padding:.35rem .65rem; border-radius:30px; }
+
+/* cave glow accent for day 2 */
+.day--2::before{ content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(60% 40% at 50% 38%, rgba(255,176,46,.16), transparent 70%); }
+
+/* =================================================================
+   MIDNIGHT BIRTHDAY (between day2 & day3)
+   ================================================================= */
+.midnight{ position:relative; min-height:92svh; display:grid; place-items:center; text-align:center; overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 120%, #5a2150 0%, #1c0f2c 45%, #0a0716 100%); color:var(--cream); padding:6rem 0; }
+.stars{ position:absolute; inset:0; z-index:0; }
+.star{ position:absolute; background:#fff; border-radius:50%; opacity:.8; animation:tw 3s ease-in-out infinite; }
+@keyframes tw{ 0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1)} }
+.midnight__inner{ position:relative; z-index:3; }
+.midnight .kicker{ color:var(--gold); margin-bottom:1.4rem; }
+.midnight__time{ font-family:var(--ff-mono); font-size:clamp(2.4rem,9vw,6rem); letter-spacing:.06em; color:#fff; line-height:1; }
+.midnight__title{ font-family:var(--ff-display); font-style:italic; font-weight:500; font-size:clamp(1.8rem,5vw,3.6rem); margin:.4em 0 .2em; }
+.midnight__title b{ color:var(--pink); font-weight:700; }
+.midnight__note{ font-family:var(--ff-hand); font-size:clamp(1.4rem,3vw,2.1rem); color:var(--gold); }
+.cake{ font-size:clamp(3rem,10vw,6rem); margin-top:1rem; display:inline-block; cursor:pointer; }
+.midnight__hint{ font-family:var(--ff-mono); font-size:.66rem; letter-spacing:.2em; opacity:.6; margin-top:.6rem; text-transform:uppercase; }
+
+/* =================================================================
+   FINALE
+   ================================================================= */
+.finale{ position:relative; min-height:100svh; display:flex; flex-direction:column; justify-content:center; text-align:center;
+  padding:clamp(4rem,9vw,8rem) 0; overflow:hidden; color:var(--cream);
+  background:
+    radial-gradient(100% 80% at 50% 0%, rgba(255,176,46,.7), transparent 55%),
+    linear-gradient(180deg,#ff7a45 0%, #ff5d8f 40%, #5a2150 100%);
+}
+.finale .kicker{ color:rgba(255,243,230,.9); }
+.finale__photo{ position:relative; width:clamp(148px,22vw,224px); aspect-ratio:1/1; margin:0 auto 1.6rem; }
+.finale__photo img{ width:100%; height:100%; aspect-ratio:1/1; object-fit:cover; object-position:center 20%; border-radius:50%;
+  border:5px solid #fff; box-shadow:0 22px 50px -18px rgba(40,8,30,.6); position:relative; z-index:2; }
+.finale__photo::before{ content:""; position:absolute; inset:-15px; border-radius:50%; border:2px dashed rgba(255,243,230,.6); z-index:1; animation:spin 26s linear infinite; }
+@keyframes spin{ to{ transform:rotate(360deg); } }
+.finale__ribbon{ display:inline-block; transform:rotate(-3deg);
+  font-family:var(--ff-hand); font-size:clamp(1.3rem,3vw,1.6rem); color:var(--ink); background:var(--gold);
+  padding:.12em .85em; border-radius:30px; box-shadow:0 8px 18px -8px rgba(0,0,0,.4); margin-bottom:1.4rem; }
+.finale__hbd{ font-family:var(--ff-hand); font-size:clamp(2rem,7vw,4.5rem); color:#fff; transform:rotate(-3deg); }
+.finale__big{ font-family:var(--ff-display); font-weight:700; font-style:italic; font-size:clamp(4rem,19vw,16rem); line-height:.84; letter-spacing:-.02em;
+  background:linear-gradient(180deg,#fff,#ffe2b0); -webkit-background-clip:text; background-clip:text; color:transparent;
+  filter:drop-shadow(0 16px 40px rgba(40,8,30,.4)); }
+.finale__line{ font-family:var(--ff-display); font-style:italic; font-weight:300; font-size:clamp(1.1rem,3vw,2rem); margin-top:.4em; max-width:30ch; margin-inline:auto; }
+.finale__cta{ margin-top:2.4rem; display:inline-flex; align-items:center; gap:.7rem; font-family:var(--ff-mono); font-size:.74rem; letter-spacing:.2em; text-transform:uppercase;
+  background:var(--ink); color:var(--cream); padding:1.05rem 2rem; border-radius:40px; border:none; cursor:pointer; transition:transform .25s ease, box-shadow .25s ease; }
+.finale__cta:hover{ transform:translateY(-3px) scale(1.03); box-shadow:0 18px 36px -14px rgba(0,0,0,.55); }
+
+.footer{ position:relative; z-index:3; margin-top:auto; padding-top:clamp(3rem,7vw,5rem); display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; flex-wrap:wrap; }
+.footer .who{ font-family:var(--ff-display); font-style:italic; font-size:1.2rem; }
+.footer .meta{ font-family:var(--ff-mono); font-size:.66rem; letter-spacing:.15em; text-transform:uppercase; opacity:.85; text-align:right; }
+
+/* =================================================================
+   RESPONSIVE
+   ================================================================= */
+/* tablet and down */
+@media (max-width:880px){
+  .intro__grid{ grid-template-columns:1fr; }
+  .polaroid{ max-width:340px; margin:0 auto; transform:rotate(2deg); }
+  .stop{ grid-template-columns:1fr; gap:1.6rem; }
+  .stop--flip .stop__media{ order:0; }
+  .hero__top{ flex-direction:column; }
+  .boarding{ text-align:left; align-self:flex-start; }
+  .hero__bottom{ flex-direction:column; align-items:flex-start; gap:1.8rem; }
+  .day__head{ align-items:flex-start; }
+  .day__date{ text-align:left; }
+  /* route switches to vertical timeline */
+  .route__h{ display:none; }
+  .route__v{ display:block; }
+  .route__real{ flex-direction:column; text-align:center; }
+  .route__realnote{ max-width:24ch; }
+  .footer{ flex-direction:column; align-items:flex-start; }
+  .footer .meta{ text-align:left; }
+}
+
+/* phones */
+@media (max-width:560px){
+  .hero__stats{ flex-wrap:wrap; gap:1.2rem 1.6rem; }
+  .hero__name{ font-size:clamp(3.4rem,24vw,7rem); }
+  .day__ghost{ font-size:38vw; }
+  .stop__body{ font-size:1rem; }
+  .marquee__track span{ font-size:13vw; }
+  .midnight__time{ letter-spacing:.04em; }
+  .polaroid--map{ width:min(280px,82vw); }
+}
+
+/* guard against any accidental horizontal overflow */
+@media (max-width:880px){ html,body{ overflow-x:hidden; max-width:100%; } }
+@media (prefers-reduced-motion:reduce){
+  *{ animation:none !important; transition:none !important; }
+  .r-up{ opacity:1; transform:none; }
+  .line-mask>span{ transform:none; }
+  .frame img{ transform:none; }
+}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="progress" id="progress"></div>
+
+<!-- =================== HERO =================== -->
+<header class="hero" id="hero">
+  <div class="wrap hero__top">
+    <div class="kicker" data-hero>An Ontario Odyssey · MMXXVI</div>
+    <div class="boarding" data-hero>
+      Boarding Pass
+      <b>YYZ → THE WILD</b>
+      Jul 24 to 26 · 5 pax
+    </div>
+  </div>
+
+  <div class="wrap hero__center">
+    <div class="hero__pre" data-hero>happy birthday,</div>
+    <h1 class="hero__name" id="heroName">Shats</h1>
+    <p class="hero__sub" data-hero>Three days. Five wild hearts. <em>One unforgettable trip.</em></p>
+  </div>
+
+  <div class="wrap hero__bottom">
+    <div class="hero__stats">
+      <div class="stat" data-hero><div class="n" data-count="3">0</div><div class="l">Days</div></div>
+      <div class="stat" data-hero><div class="n" data-count="5">0</div><div class="l">Adventurers</div></div>
+      <div class="stat" data-hero><div class="n" data-count="3" data-suffix="hr">0</div><div class="l">Boat Cruise</div></div>
+      <div class="stat" data-hero><div class="n" data-count="1">0</div><div class="l">Birthday Girl</div></div>
+    </div>
+    <div class="scrollcue" data-hero>scroll to begin<span class="bar"></span></div>
+  </div>
+</header>
+
+<!-- =================== INTRO =================== -->
+<section class="intro">
+  <div class="wrap">
+    <div class="intro__grid">
+      <div>
+        <div class="kicker reveal">Field Notes · The Crew</div>
+        <p class="intro__lead reveal">
+          Five best friends packed snacks, playlists and far too much excitement to drive out from
+          <b>Toronto</b> and chase <span class="mark">waterfalls, caves and golden sunsets</span>
+          across Ontario, all for the birthday girl, <b>Shats</b>.
+        </p>
+        <p class="intro__note reveal">
+          Windows down, music up, cooler stocked. This is the official dossier for the most
+          ridiculous, most beautiful friends' road trip of the year. Buckle up, birthday girl.
+        </p>
+      </div>
+      <div class="reveal">
+        <div class="polaroid" data-tilt>
+          <span class="tape"></span>
+          <img src="assets/shats.jpg" alt="Shats, the birthday girl" />
+          <span class="cap">the birthday girl ✿</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== ROUTE =================== -->
+<section class="route" id="route">
+  <div class="wrap">
+    <div class="route__head">
+      <span class="kicker reveal">The Itinerary · Pin the Map</span>
+      <h2 class="route__title reveal">The Grand <em>Route</em></h2>
+      <p class="route__sub reveal">One big loop, six unforgettable stops, five friends in one car. We leave Toronto, chase the whole province, and roll home for cake.</p>
+    </div>
+
+    <div id="routeMap">
+      <!-- horizontal: desktop -->
+      <div class="route__h">
+        <div class="rrow rrow--badge">
+          <span>Start</span><span>Day 1</span><span>Day 1</span><span>Day 2</span><span>Day 2</span><span>Day 3</span><span>Finish</span>
+        </div>
+        <div class="rrow rrow--dots">
+          <div class="rline"><span class="rfill" id="rfillH"></span><span class="rcar" id="rcarH">🚗</span></div>
+          <span class="rcell"><span class="rdot">🏠</span></span>
+          <span class="rcell"><span class="rdot">🌅</span></span>
+          <span class="rcell"><span class="rdot">🏔️</span></span>
+          <span class="rcell"><span class="rdot">🕯️</span></span>
+          <span class="rcell"><span class="rdot">💦</span></span>
+          <span class="rcell"><span class="rdot">⛵</span></span>
+          <span class="rcell"><span class="rdot">🎂</span></span>
+        </div>
+        <div class="rrow rrow--name">
+          <span><b>Home</b><i>Toronto</i></span>
+          <span><b>Presqu'ile</b><i>Provincial Park</i></span>
+          <span><b>Calabogie</b><i>Peaks &amp; Cabin</i></span>
+          <span><b>Bonnechere</b><i>Caves</i></span>
+          <span><b>Fourth Chute</b><i>Falls</i></span>
+          <span><b>1000 Islands</b><i>Boat Cruise</i></span>
+          <span><b>Home</b><i>Birthday Dinner</i></span>
+        </div>
+      </div>
+
+      <!-- vertical: mobile -->
+      <ol class="route__v">
+        <span class="rline-v"><span class="rfill-v" id="rfillV"></span><span class="rcar-v" id="rcarV">🚗</span></span>
+        <li class="vnode"><span class="rdot">🏠</span><div class="vtext"><em>Start</em><b>Home</b><i>Toronto</i></div></li>
+        <li class="vnode"><span class="rdot">🌅</span><div class="vtext"><em>Day 1</em><b>Presqu'ile Park</b><i>Provincial Park</i></div></li>
+        <li class="vnode"><span class="rdot">🏔️</span><div class="vtext"><em>Day 1</em><b>Calabogie</b><i>Peaks &amp; Cabin</i></div></li>
+        <li class="vnode"><span class="rdot">🕯️</span><div class="vtext"><em>Day 2</em><b>Bonnechere Caves</b><i>Underground</i></div></li>
+        <li class="vnode"><span class="rdot">💦</span><div class="vtext"><em>Day 2</em><b>Fourth Chute Falls</b><i>Waterfall</i></div></li>
+        <li class="vnode"><span class="rdot">⛵</span><div class="vtext"><em>Day 3</em><b>1000 Islands</b><i>Boat Cruise</i></div></li>
+        <li class="vnode"><span class="rdot">🎂</span><div class="vtext"><em>Finish</em><b>Home</b><i>Birthday Dinner</i></div></li>
+      </ol>
+    </div>
+
+    <div class="route__real reveal">
+      <div class="polaroid polaroid--map" data-tilt>
+        <span class="tape"></span>
+        <img src="assets/route-map.jpg" alt="Google Maps route across Ontario" />
+        <span class="cap">the real map ✎</span>
+      </div>
+      <p class="route__realnote">straight from the group chat to reality ♡</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== MARQUEE =================== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track" id="marquee">
+    <span>Presqu'ile <span class="dot">·</span> Calabogie Peaks <span class="dot">·</span> Bonnechere Caves <span class="dot">·</span> Fourth Chute Falls <span class="dot">·</span> Thousand Islands <span class="dot">·</span></span>
+    <span>Presqu'ile <span class="dot">·</span> Calabogie Peaks <span class="dot">·</span> Bonnechere Caves <span class="dot">·</span> Fourth Chute Falls <span class="dot">·</span> Thousand Islands <span class="dot">·</span></span>
+  </div>
+</div>
+
+<!-- =================== DAY 1 =================== -->
+<section class="day day--1" id="day1">
+  <span class="day__ghost" data-ghost>01</span>
+  <div class="wrap">
+    <div class="day__head">
+      <div class="day__label">
+        <span class="kicker reveal">Day One · The Departure</span>
+        <h2 class="day__title reveal">Lakes, Peaks<br/>&amp; First Light</h2>
+      </div>
+      <div class="day__date reveal">Thursday<b>July 24</b>Toronto → Calabogie</div>
+    </div>
+
+    <!-- stop 1 -->
+    <article class="stop">
+      <div class="stop__media reveal">
+        <div class="frame frame--port"><img data-parallax src="assets/presquile-sunset.jpg" alt="Sunset over Presqu'ile marsh" /><span class="frame__tag">44.00°N · Lake Ontario</span></div>
+      </div>
+      <div class="reveal">
+        <div class="stop__num">Stop 01</div>
+        <h3 class="stop__name">Presqu'ile <em>Provincial Park</em></h3>
+        <p class="stop__body">First stamp in the passport. We chase the morning light along the shoreline, boardwalks and marshes where the sky melts into ten shades of pink before we have even had our second coffee.</p>
+        <span class="stop__hand">a soft start to a wild weekend ✿</span>
+        <div class="tags"><span>Shoreline walk</span><span>Birding</span><span>Golden hour</span></div>
+      </div>
+    </article>
+
+    <!-- stop 2 -->
+    <article class="stop stop--flip">
+      <div class="stop__media reveal">
+        <div class="frame frame--wide"><img data-parallax src="assets/calabogie-lift.jpg" alt="Calabogie Peaks chairlift over the forest" /><span class="frame__tag">Calabogie Peaks Resort</span></div>
+      </div>
+      <div class="reveal">
+        <div class="stop__num">Stop 02</div>
+        <h3 class="stop__name">Calabogie <em>Peaks</em></h3>
+        <p class="stop__body">Then we point the car north for the main event of the day. Chairlift views, kayaks and stand-up paddleboards on the lake, and enough adrenaline to earn every snack in the cooler.</p>
+        <span class="stop__hand">paddle, climb, repeat!</span>
+        <div class="tags"><span>Kayak &amp; SUP</span><span>Chairlift</span><span>Eagle's Nest</span></div>
+      </div>
+    </article>
+
+    <!-- stop 3 -->
+    <article class="stop">
+      <div class="stop__media reveal">
+        <div class="frame frame--tall"><img data-parallax src="assets/calabogie-cliff.jpg" alt="Cliff lookout over Calabogie forest" /><span class="frame__tag">The Lookout</span></div>
+      </div>
+      <div class="reveal">
+        <div class="stop__num">Stop 03</div>
+        <h3 class="stop__name">Cliffside <em>Wonder</em></h3>
+        <p class="stop__body">We stand on the edge of the world for a minute, breathe in the endless green, take the photo nobody will believe, and then roll into the cabin as the stars switch on one by one.</p>
+        <span class="stop__hand">cabin nights &amp; big skies ☾</span>
+        <div class="tags"><span>Cabin stay</span><span>Stargazing</span><span>Cozy fire</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =================== DAY 2 =================== -->
+<section class="day day--2" id="day2">
+  <span class="day__ghost" data-ghost>02</span>
+  <div class="wrap">
+    <div class="day__head">
+      <div class="day__label">
+        <span class="kicker reveal">Day Two · Into the Earth</span>
+        <h2 class="day__title reveal">Caves, Falls<br/>&amp; a Midnight Wish</h2>
+      </div>
+      <div class="day__date reveal">Friday<b>July 25</b>The wild middle</div>
+    </div>
+
+    <!-- stop 1 -->
+    <article class="stop">
+      <div class="stop__media reveal">
+        <div class="frame frame--tall"><img data-parallax src="assets/caves-boardwalk.jpg" alt="Lit boardwalk inside Bonnechere Caves" /><span class="frame__tag">Bonnechere Caves</span></div>
+      </div>
+      <div class="reveal">
+        <div class="stop__num">Stop 04</div>
+        <h3 class="stop__name">Bonnechere <em>Caves</em></h3>
+        <p class="stop__body">We disappear underground into a 500-million-year-old sea floor, lit lanterns guiding us past fossils and dripping limestone. Cool air, echoing laughter, and not a single phone signal.</p>
+        <span class="stop__hand">into the underworld we go!</span>
+        <div class="tags"><span>Guided tour</span><span>Fossils</span><span>Underground</span></div>
+      </div>
+    </article>
+
+    <!-- stop 2 -->
+    <article class="stop stop--flip">
+      <div class="stop__media reveal">
+        <div class="frame frame--wide"><img data-parallax src="assets/falls.jpg" alt="Fourth Chute Falls" /><span class="frame__tag">Fourth Chute Falls</span></div>
+      </div>
+      <div class="reveal">
+        <div class="stop__num">Stop 05</div>
+        <h3 class="stop__name">Fourth Chute <em>Falls</em></h3>
+        <p class="stop__body">Back into the sunlight, we follow the roar of the water to the falls. We dip our feet, skip a few stones, and wander the little pockets nearby just to see where the day takes us.</p>
+        <span class="stop__hand">cold water, warm hearts</span>
+        <div class="tags"><span>Waterfall</span><span>Explore nearby</span><span>Photo stop</span></div>
+      </div>
+    </article>
+
+    <!-- stop 3 -->
+    <article class="stop">
+      <div class="stop__media reveal">
+        <div class="frame frame--port"><img data-parallax src="assets/caves-person.jpg" alt="Inside the caves" /><span class="frame__tag">Back at the cabin</span></div>
+      </div>
+      <div class="reveal">
+        <div class="stop__num">Stop 06</div>
+        <h3 class="stop__name">Fire, Feast <em>&amp; Cheers</em></h3>
+        <p class="stop__body">Night two belongs to us. Smoke off the barbecue, music a little too loud, glasses raised under the stars. We are counting down the minutes to something magical.</p>
+        <span class="stop__hand">grill on, glasses up ✦</span>
+        <div class="tags"><span>Barbecue</span><span>Drinks</span><span>Countdown</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =================== MIDNIGHT =================== -->
+<section class="midnight" id="midnight">
+  <div class="stars" id="stars" aria-hidden="true"></div>
+  <div class="wrap midnight__inner">
+    <div class="kicker reveal">The clock strikes</div>
+    <div class="midnight__time reveal">00:00</div>
+    <p class="midnight__title reveal">It is officially <b>Shats's</b> birthday.</p>
+    <p class="midnight__note reveal">make a wish, then make some noise ✿</p>
+    <div class="cake reveal" id="cake" title="tap me">🎂</div>
+    <p class="midnight__hint reveal">tap the cake</p>
+  </div>
+</section>
+
+<!-- =================== DAY 3 =================== -->
+<section class="day day--3" id="day3">
+  <span class="day__ghost" data-ghost>03</span>
+  <div class="wrap">
+    <div class="day__head">
+      <div class="day__label">
+        <span class="kicker reveal">Day Three · The Big Day</span>
+        <h2 class="day__title reveal">Islands, Water<br/>&amp; a Toast to You</h2>
+      </div>
+      <div class="day__date reveal">Saturday<b>July 26</b>Birthday, finally!</div>
+    </div>
+
+    <!-- stop 1 -->
+    <article class="stop">
+      <div class="stop__media reveal">
+        <div class="frame frame--wide"><img data-parallax src="assets/cruise-castle.jpg" alt="Thousand Islands boat cruise past Boldt Castle" /><span class="frame__tag">Thousand Islands</span></div>
+      </div>
+      <div class="reveal">
+        <div class="stop__num">Stop 07</div>
+        <h3 class="stop__name">Thousand <em>Islands Cruise</em></h3>
+        <p class="stop__body">The birthday begins on the water. Three hours drifting past fairytale castles and a thousand emerald islands, wind in our hair and the best company in the world. This one is just for you.</p>
+        <span class="stop__hand">queen of the river 👑</span>
+        <div class="tags"><span>3-hour cruise</span><span>Boldt Castle</span><span>Birthday VIP</span></div>
+      </div>
+    </article>
+
+    <!-- stop 2 -->
+    <article class="stop stop--flip">
+      <div class="stop__media reveal">
+        <div class="frame frame--port"><img data-parallax src="assets/islands-aerial.jpg" alt="Aerial view of the Thousand Islands" /><span class="frame__tag">From above</span></div>
+      </div>
+      <div class="reveal">
+        <div class="stop__num">Stop 08</div>
+        <h3 class="stop__name">A Thousand <em>Little Worlds</em></h3>
+        <p class="stop__body">Every island a tiny universe, every channel a new view. We point and gasp and plan the next trip already, because once is never enough with this crew.</p>
+        <span class="stop__hand">collecting islands &amp; memories</span>
+        <div class="tags"><span>Scenic views</span><span>Cameras out</span><span>Pure joy</span></div>
+      </div>
+    </article>
+
+    <!-- stop 3 -->
+    <article class="stop">
+      <div class="stop__media reveal">
+        <div class="frame frame--wide"><img data-parallax src="assets/presquile-dusk.jpg" alt="Dusk over the lake on the way home" /><span class="frame__tag">The drive home</span></div>
+      </div>
+      <div class="reveal">
+        <div class="stop__num">Stop 09</div>
+        <h3 class="stop__name">Birthday Dinner <em>in Toronto</em></h3>
+        <p class="stop__body">We roll back into the city glowing, sun-kissed and a little tired in the best way, for one last birthday dinner together before the night, and the trip, comes home.</p>
+        <span class="stop__hand">the perfect ending ♡</span>
+        <div class="tags"><span>Dinner in the 6ix</span><span>Toasts</span><span>Home</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- =================== FINALE =================== -->
+<section class="finale" id="finale">
+  <div class="wrap">
+    <div class="finale__photo reveal">
+      <img src="assets/shats.jpg" alt="Shats, the birthday girl" />
+    </div>
+    <span class="finale__ribbon reveal">our girl ✿</span>
+    <div class="finale__hbd reveal">and so we say...</div>
+    <h2 class="finale__big" id="finaleBig">Happy<br/>Birthday</h2>
+    <p class="finale__line reveal">Here is to caves, cliffs, cruises and you, Shats. Thank you for being the reason five friends go everywhere together.</p>
+    <button class="finale__cta" id="confettiBtn">Throw confetti 🎉</button>
+
+    <div class="footer">
+      <div class="who reveal">Made with love by your road-trip crew, all five of us.</div>
+      <div class="meta reveal">Shats's Ontario Odyssey<br/>July 24 to 26 · MMXXVI · 🚗💨</div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== LIBS =================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<script>
+(function(){
+  "use strict";
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const palette = ["#ff5d8f","#ff7a45","#ffb02e","#1f8f86","#1d6fa8","#fff3e6"];
+
+  /* ---------- hero confetti specks ---------- */
+  (function(){
+    const hero=document.getElementById("hero");
+    for(let i=0;i<22;i++){
+      const s=document.createElement("i"); s.className="speck";
+      const sz=4+Math.random()*8;
+      s.style.width=sz+"px"; s.style.height=(sz*(Math.random()>.5?1:2.4))+"px";
+      s.style.left=Math.random()*100+"%"; s.style.top=Math.random()*100+"%";
+      s.style.background=palette[(Math.random()*palette.length)|0];
+      s.style.transform=`rotate(${Math.random()*360}deg)`;
+      hero.appendChild(s);
+      if(!reduce){
+        gsap.to(s,{ y:"-=40", x:"+="+(Math.random()*60-30), rotation:"+=180", duration:3+Math.random()*4, yoyo:true, repeat:-1, ease:"sine.inOut", delay:Math.random()*2 });
+      }
+    }
+  })();
+
+  /* ---------- stars for midnight ---------- */
+  (function(){
+    const box=document.getElementById("stars"); if(!box) return;
+    for(let i=0;i<70;i++){
+      const st=document.createElement("span"); st.className="star";
+      const sz=1+Math.random()*2.4;
+      st.style.width=sz+"px"; st.style.height=sz+"px";
+      st.style.left=Math.random()*100+"%"; st.style.top=Math.random()*100+"%";
+      st.style.animationDelay=(Math.random()*3)+"s";
+      box.appendChild(st);
+    }
+  })();
+
+  /* ---------- counters ---------- */
+  function runCounters(){
+    document.querySelectorAll("[data-count]").forEach(el=>{
+      if(el.dataset.done) return; el.dataset.done="1";
+      const end=+el.dataset.count, suf=el.dataset.suffix||"";
+      const o={v:0};
+      gsap.to(o,{ v:end, duration:1.4, ease:"power2.out", onUpdate:()=>{ el.textContent=Math.round(o.v)+suf; } });
+    });
+  }
+
+  /* ---------- reduced motion: just show ---------- */
+  if(reduce){
+    document.querySelectorAll(".r-up,.reveal,[data-hero]").forEach(e=>{ e.style.opacity=1; e.style.transform="none"; });
+    const fh=document.getElementById("rfillH"); if(fh) fh.style.width="100%";
+    const fv=document.getElementById("rfillV"); if(fv) fv.style.height="100%";
+    runCounters();
+    bindConfetti();
+    return;
+  }
+
+  /* ---------- Lenis smooth scroll ---------- */
+  const lenis = new Lenis({ duration:1.15, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)), smoothWheel:true });
+  function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+
+  gsap.registerPlugin(ScrollTrigger);
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0);
+
+  /* ---------- progress bar ---------- */
+  const prog=document.getElementById("progress");
+  ScrollTrigger.create({ start:0, end:"max", onUpdate:s=>{ prog.style.transform=`scaleX(${s.progress})`; } });
+
+  /* ---------- hero entrance ---------- */
+  // split hero name into letters
+  const heroName=document.getElementById("heroName");
+  const nameText=heroName.textContent.trim(); heroName.textContent="";
+  nameText.split("").forEach(ch=>{
+    const sp=document.createElement("span"); sp.textContent=ch;
+    sp.style.display="inline-block"; sp.style.transform="translateY(120%) rotate(8deg)"; sp.style.opacity="0";
+    heroName.appendChild(sp);
+  });
+  const heroTL=gsap.timeline({ delay:.25 });
+  heroTL.to(heroName.children,{ y:0, rotate:0, opacity:1, duration:1.1, ease:"expo.out", stagger:.06 })
+        .from("[data-hero]",{ y:34, opacity:0, duration:.9, ease:"power3.out", stagger:.12 },"-=.8")
+        .add(runCounters,"-=.4");
+
+  /* ---------- generic reveals ---------- */
+  gsap.utils.toArray(".reveal").forEach(el=>{
+    gsap.from(el,{ y:46, opacity:0, duration:1, ease:"power3.out",
+      scrollTrigger:{ trigger:el, start:"top 86%" } });
+  });
+
+  /* ---------- image parallax (inner scale image drifts) ---------- */
+  gsap.utils.toArray("[data-parallax]").forEach(img=>{
+    gsap.fromTo(img,{ yPercent:-9 },{ yPercent:9, ease:"none",
+      scrollTrigger:{ trigger:img, start:"top bottom", end:"bottom top", scrub:true } });
+  });
+
+  /* ---------- ghost day numbers drift ---------- */
+  gsap.utils.toArray("[data-ghost]").forEach(g=>{
+    gsap.fromTo(g,{ xPercent:-6, yPercent:6 },{ xPercent:6, yPercent:-6, ease:"none",
+      scrollTrigger:{ trigger:g.closest("section"), start:"top bottom", end:"bottom top", scrub:true } });
+  });
+
+  /* ---------- marquee ---------- */
+  const mq=document.getElementById("marquee");
+  gsap.to(mq,{ xPercent:-50, ease:"none", repeat:-1, duration:26 });
+
+  /* ---------- route map: car drives the line as you scroll ---------- */
+  const routeMM=gsap.matchMedia();
+  routeMM.add("(min-width:881px)",()=>{
+    gsap.from(".route__h .rdot",{ scale:0, opacity:0, duration:.55, ease:"back.out(2.2)", stagger:.09,
+      scrollTrigger:{ trigger:"#routeMap", start:"top 82%" } });
+    const tl=gsap.timeline({ scrollTrigger:{ trigger:"#routeMap", start:"top 72%", end:"bottom 65%", scrub:.6 } });
+    tl.fromTo("#rfillH",{ width:"0%" },{ width:"100%", ease:"none" },0)
+      .fromTo("#rcarH",{ left:"0%" },{ left:"100%", ease:"none" },0);
+  });
+  routeMM.add("(max-width:880px)",()=>{
+    gsap.from(".route__v .rdot",{ scale:0, opacity:0, duration:.5, ease:"back.out(2.2)", stagger:.08,
+      scrollTrigger:{ trigger:"#routeMap", start:"top 85%" } });
+    const tl=gsap.timeline({ scrollTrigger:{ trigger:"#routeMap", start:"top 75%", end:"bottom 75%", scrub:.6 } });
+    tl.fromTo("#rfillV",{ height:"0%" },{ height:"100%", ease:"none" },0)
+      .fromTo("#rcarV",{ top:"0%" },{ top:"100%", ease:"none" },0);
+  });
+
+  /* ---------- finale big pop ---------- */
+  ScrollTrigger.create({
+    trigger:"#finale", start:"top 55%", once:true,
+    onEnter:()=>{ burstBig(); }
+  });
+  gsap.from("#finaleBig",{ scale:.7, opacity:0, duration:1.2, ease:"back.out(1.6)",
+    scrollTrigger:{ trigger:"#finaleBig", start:"top 80%" } });
+
+  /* ---------- midnight confetti when revealed ---------- */
+  ScrollTrigger.create({
+    trigger:"#midnight", start:"top 40%", once:true,
+    onEnter:()=>{ sideBursts(); }
+  });
+
+  /* ---------- polaroid subtle tilt on scroll ---------- */
+  gsap.fromTo("[data-tilt]",{ rotate:5 },{ rotate:-1, ease:"none",
+    scrollTrigger:{ trigger:".intro", start:"top bottom", end:"bottom top", scrub:true } });
+
+  /* ===================== CONFETTI ===================== */
+  function fire(opts){ if(window.confetti) confetti(Object.assign({ colors:palette, disableForReducedMotion:true },opts)); }
+  function burstBig(){
+    fire({ particleCount:160, spread:90, startVelocity:55, origin:{y:.5} });
+    setTimeout(()=>fire({ particleCount:120, angle:60, spread:70, origin:{x:0,y:.6} }),150);
+    setTimeout(()=>fire({ particleCount:120, angle:120, spread:70, origin:{x:1,y:.6} }),300);
+  }
+  function sideBursts(){
+    fire({ particleCount:90, angle:60, spread:75, origin:{x:0,y:.7} });
+    fire({ particleCount:90, angle:120, spread:75, origin:{x:1,y:.7} });
+  }
+  function rainCake(){
+    const end=Date.now()+1200;
+    (function frame(){
+      fire({ particleCount:6, spread:60, startVelocity:35, origin:{ x:Math.random(), y:-.1 }, gravity:.9, scalar:1.1 });
+      if(Date.now()<end) requestAnimationFrame(frame);
+    })();
+  }
+  function bindConfetti(){
+    const btn=document.getElementById("confettiBtn");
+    if(btn) btn.addEventListener("click",burstBig);
+    const cake=document.getElementById("cake");
+    if(cake) cake.addEventListener("click",()=>{ rainCake(); gsap.fromTo(cake,{scale:1},{scale:1.4,duration:.18,yoyo:true,repeat:1,ease:"power2.out"}); });
+  }
+  bindConfetti();
+
+  ScrollTrigger.refresh();
+})();
+</script>
+</body>
+</html>
